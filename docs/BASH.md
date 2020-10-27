@@ -64,6 +64,12 @@ drwxr-xr-x+ 1 marti marti   0 Oct 26 18:46 src
 ### `touch <subor>`
 Dostkni sa súboru. Ak súbor neexistuje, `touch` vytvorí nový súbor. Ak súbor existuje, `touch` zmení čas poslednej zmeny súboru na aktuálny čas.
 
+### `mkdir <zlozka>`
+Vytvor novú zložku.
+
+### `rm <subor>` / `rmdir <zlozka>`
+Vymaž súbor/zložku. Pozor, vymazanie neznamená zahodiť do koša. Vymazané súbory sa nedajú obnoviť.
+
 ### `which <program>`
 Skontroluje, či je zadaný program nainštalovaný. Ak áno, ukáže cestu k programu.
 ```
