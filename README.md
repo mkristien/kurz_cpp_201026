@@ -7,3 +7,7 @@ Toto uložisko obsahuje všetky potrebné materiály a príkladné riešenia zad
 - `docs` - dokumentáciu a učebné materiály k jednotlivým témam kurzu 
 - `src` - zdrojový kód, rozdelený do zložiek podľa jednotlivých lekncií/dní
 
+## Linky
+[GDrive so zoom nahravkami](http://bit.ly/KurzCdrive)   \
+[Zoom link](http://bit.ly/KurzCzoom)                    \
+[Feedback](http://bit.ly/KurzCfeedback)
