@@ -23,4 +23,47 @@ make            # skompiluj prvy ciel
 make <ciel>     # skompiluj dany ciel
 ```
 
+## Ďalšie funkcie
+Ak nechceme, aby príkazy pri kompilovaní cieľov neboli vypísané do výstupu, stačí na začiatok príkazu pridať `@`.
+### Premenné
+Do `Makefile` premenných si môžeme zapísať ľubovoľné hodnoty. Napríklad, v premennej `SRCS` môžeme mať uložené názvy všetkých zdrojových súborov. Premmenné môžeme použiť takto: `$(SRCS)`
+```Makefile
+SRCS = argumenty.cpp nasobky.cpp pole_int.cpp pole_double.cpp
 
+info:
+	@echo "premenna SRCS ma hodnotu $(SRCS)"
+```
+
+### Nahradenie menších reťazcov v slovách
+S použitím funkcie `patsubst` môžeme časti slov nahradiť inými slovami. Táto funkcia je užitočná na nahradenie včetkých názvov súborov zdrojového kódu názvami exe súborov.
+
+Syntax:\
+`$(patsubst <vzorez vo vstupe>, <vzorec vo vystupe>, <vstupny text>)`
+
+```Makefile
+# Premen vsetky .cpp nazvy na rovnake .exe nazvy
+# Do Premennej EXES na zapise "jeden.exe dva.exe"
+EXES = $(patsubst %.cpp, %.exe, jeden.cpp dva.cpp)
+```
+[Viac info](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html).
+### Automatické premmenné
+Aby sme nemuseli pre každý cieľ zbytočne vypisovať názovy súborov, použijeme automatické premenné. Premenná `$@` bude nahradená hodnotou cieľa, premenná `$<` bude nahradená hodnotou závislosti.
+
+```Makefile
+hello.exe : hello.cpp
+	gcc -o $@ $<	# gcc -o hello.exe hello.cpp
+```
+[Viac info](https://riptutorial.com/makefile/example/21469/automatic-variables).
+
+### Vzorcové ciele
+Aby sme nemuseli podobné ciele viackrát vypisovať, môžeme napísať jedno pravidlo, napr. ako skompilovať všetky `.exe` súbory.
+
+Rovnako ako pri použití `patsubst`, znak `%` zastáva zhodojúcu sa časť medzi cieľom a závislosťou (i.e. koreň).
+
+```Makefile
+# Pravidlo kompilacie pre vsetky .exe ciele
+%.exe : %.cpp
+	@echo "kompilujem $< do $@"
+	gcc -o $@ $<
+```
+[Viac info](https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html#Pattern-Rules).
