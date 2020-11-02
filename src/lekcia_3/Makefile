@@ -1,5 +1,5 @@
 
-SRCS = argumenty.cpp nasobky.cpp pole_int.cpp pole_double.cpp vypocitaj_pi.cpp tabulka_nasobkov.cpp
+SRCS = pointer1.cpp pointer2.cpp pointer3.cpp
 CFLAGS = -Og
 # Premen vsetky .cpp nazvy na rovnake .exe nazvy
 EXES = $(patsubst %.cpp, %.exe, $(SRCS))
