@@ -2,6 +2,14 @@
 #include <stdlib.h>
 
 int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        printf("Prosim, zadaj kolko bodov sa ma nahodne vygenerovat\n"
+               "pouzitie:\n"
+               "%s <pocet nahodnych bodov>\n",
+               argv[0]
+        );
+        return 1;
+    }
     int pocet_bodov   = std::atoi(argv[1]);
     int pocet_v_kruhu = 0;
 

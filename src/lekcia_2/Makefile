@@ -1,5 +1,5 @@
 
-SRCS = argumenty.cpp nasobky.cpp pole_int.cpp pole_double.cpp
+SRCS = argumenty.cpp nasobky.cpp pole_int.cpp pole_double.cpp vypocitaj_pi.cpp tabulka_nasobkov.cpp
 
 # Premen vsetky .cpp nazvy na rovnake .exe nazvy
 EXES = $(patsubst %.cpp, %.exe, $(SRCS))
