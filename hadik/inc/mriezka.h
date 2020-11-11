@@ -19,3 +19,7 @@ void had_do_mriezky(meta_had* h, char** mriezka);
 meta_mriezka* init_mriezka(int riadky, int stlpce);
 
 void print_mriezka(meta_mriezka* m);
+
+void vytvor_potravu(meta_mriezka* m);
+
+int mriezka_je_plna(meta_mriezka* m);

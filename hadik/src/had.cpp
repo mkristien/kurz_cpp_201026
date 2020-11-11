@@ -15,10 +15,13 @@ meta_had* init_had(int max_dlzka) {
   data_had.had[2] = {3, 1};
   data_had.had[3] = {4, 1};
   data_had.had[4] = {5, 1};
+  data_had.had[5] = {5, 1};
+  data_had.had[6] = {6, 1};
+  data_had.had[7] = {7, 1};
 
   data_had.vymazany_chvost = {6, 1};
 
-  data_had.had_dlzka = 5;
+  data_had.had_dlzka = 8;
   data_had.had_smer  = doprava;
   return &data_had;
 }
@@ -61,4 +64,23 @@ void had_pohyb(meta_had* h, smer novy_smer) {
   for (int i=0; i< dlzka; i++) {
     h->had[i] = h->had[i+1];
   }
+}
+
+/**
+ * bod B;
+ * b.x = 5;
+ *
+ *
+ * bod* C = &B;
+ * C.x = 5; // nefunguje
+ * (*C).x = 5;
+ * C->x   = 5;
+ */
+void had_sa_najedol(meta_had* h) {
+  for (int i=h->had_dlzka; i > 0; i--) {
+    h->had[i] = h->had[i-1];
+  }
+
+  h->had[0] = h->vymazany_chvost;
+  h->had_dlzka++;
 }

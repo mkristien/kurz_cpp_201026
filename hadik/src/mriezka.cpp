@@ -87,3 +87,27 @@ void print_mriezka(meta_mriezka* m) {
     putchar('\n');
   }
 }
+
+void vytvor_potravu(meta_mriezka* m) {
+  while (true) {
+    int x = rand() % m->stlpce; // (*m).stlpce
+    int y = rand() % m->riadky;
+
+    if (m->mriezka[y][x] == MRIEZKA_PRAZDNA) {
+      m->mriezka[y][x] = MRIEZKA_POTRAVA;
+      break;
+    }
+  }
+}
+
+int mriezka_je_plna(meta_mriezka* m) {
+  for (int i=0; i < m->riadky; i++) {
+    for (int j=0; j < m->stlpce; j++) {
+      if (m->mriezka[i][j] == MRIEZKA_PRAZDNA) {
+        return 0;
+      }
+    }
+  }
+
+  return 1;
+}
