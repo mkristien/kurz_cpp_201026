@@ -18,4 +18,4 @@
 #define KLAVESA_DOPRAVA 'l'
 #define KLAVESA_HORE    'i'
 #define KLAVESA_DOLE    'k'
-#define KLAVESA_EXIT    'w'
+#define KLAVESA_EXIT    'q'
