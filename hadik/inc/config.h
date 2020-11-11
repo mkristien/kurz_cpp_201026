@@ -1,4 +1,6 @@
 
+#pragma once
+
 // dimenzie mriezky
 #define PREDVOLENE_RIADKY  20
 #define PREDVOLENE_STLPCE  80
@@ -16,4 +18,4 @@
 #define KLAVESA_DOPRAVA 'l'
 #define KLAVESA_HORE    'i'
 #define KLAVESA_DOLE    'k'
-#define KLAVESA_EXIT    'q'
+#define KLAVESA_EXIT    'w'
