@@ -94,7 +94,7 @@ void had_pohyb(smer novy_smer) {
  */
 void init_mriezka() {
   // prvy riadok
-  for (int i=0; i < 80; i++) {
+  for (int i=0; i < STLPCE; i++) {
     mriezka[0][i] = '-';
   }
 
@@ -103,15 +103,15 @@ void init_mriezka() {
     // prvy stlpec
     mriezka[i][0] = '|';
     // stredne stlpce
-    for (int j=1; j<79; j++) {
+    for (int j=1; j<STLPCE-1; j++) {
       mriezka[i][j] = ' ';
     }
     // posledny stlpec
-    mriezka[i][79] = '|';
+    mriezka[i][STLPCE-1] = '|';
   }
 
   // posledny riadok
-  for (int i=0; i < 80; i++) {
+  for (int i=0; i < STLPCE; i++) {
     mriezka[RIADKY-1][i] = '-';
   }
 }
@@ -120,7 +120,7 @@ void print_mriezka() {
   printf("\e[2J\e[H");    // vycisti terminal a daj kurzor na poziciu 0,0
 
   for (int i=0; i<RIADKY; i++) {
-    for (int j=0; j<80; j++) {
+    for (int j=0; j<STLPCE; j++) {
       putchar(mriezka[i][j]);   // printf("%c", char)
     }
     putchar('\n');
