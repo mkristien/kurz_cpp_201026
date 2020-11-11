@@ -50,17 +50,17 @@ meta_had* init_had(int max_dlzka) {
  */
 void had_do_mriezky(meta_had* h, char** mriezka) {
   // zmen vymazany chvost na "prazdne" v mriezke
-  mriezka[h->vymazany_chvost.y][h->vymazany_chvost.x] = ' ';
+  mriezka[h->vymazany_chvost.y][h->vymazany_chvost.x] = MRIEZKA_PRAZDNA;
 
   // telo
   for (int i=0; i< h->had_dlzka -1; i++) {
     bod pozicia = h->had[i];
-    mriezka[pozicia.y][pozicia.x] = 'X';
+    mriezka[pozicia.y][pozicia.x] = MRIEZKA_HAD_TELO;
   }
 
   // hlava
   bod hlava = h->had[h->had_dlzka-1];
-  mriezka[hlava.y][hlava.x] = 'O';
+  mriezka[hlava.y][hlava.x] = MRIEZKA_HAD_HLAVA;
 }
 
 /**
@@ -126,24 +126,24 @@ meta_mriezka* init_mriezka(int riadky, int stlpce) {
 
   // prvy riadok
   for (int i=0; i < STLPCE; i++) {
-    mriezka[0][i] = '-';
+    mriezka[0][i] = MRIEZKA_STENA_HORIZ;
   }
 
   // stredne riadky
   for (int i=1; i<RIADKY-1; i++) {
     // prvy stlpec
-    mriezka[i][0] = '|';
+    mriezka[i][0] = MRIEZKA_STENA_VERTI;
     // stredne stlpce
     for (int j=1; j<STLPCE-1; j++) {
-      mriezka[i][j] = ' ';
+      mriezka[i][j] = MRIEZKA_PRAZDNA;
     }
     // posledny stlpec
-    mriezka[i][STLPCE-1] = '|';
+    mriezka[i][STLPCE-1] = MRIEZKA_STENA_VERTI;
   }
 
   // posledny riadok
   for (int i=0; i < STLPCE; i++) {
-    mriezka[RIADKY-1][i] = '-';
+    mriezka[RIADKY-1][i] = MRIEZKA_STENA_HORIZ;
   }
 
   data_mriezka.mriezka = mriezka;
@@ -172,13 +172,13 @@ void print_mriezka(meta_mriezka* m) {
  */
 smer klavesa_na_smer(char klavesa) {
   switch (klavesa) {
-    case 'i':
+    case KLAVESA_HORE:
       return hore;
-    case 'j':
+    case KLAVESA_DOLAVA:
       return dolava;
-    case 'k':
+    case KLAVESA_DOLE:
       return dole;
-    case 'l':
+    case KLAVESA_DOPRAVA:
       return doprava;
     default:
       return ziaden;
@@ -207,7 +207,7 @@ int main() {
   while (true) {
     // 1
     klavesa = getchar();
-    if (klavesa == 'q') {
+    if (klavesa == KLAVESA_EXIT) {
       break;
     }
 
