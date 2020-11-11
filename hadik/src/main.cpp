@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "config.h"
 
@@ -125,25 +126,25 @@ meta_mriezka* init_mriezka(int riadky, int stlpce) {
   }
 
   // prvy riadok
-  for (int i=0; i < STLPCE; i++) {
+  for (int i=0; i < stlpce; i++) {
     mriezka[0][i] = MRIEZKA_STENA_HORIZ;
   }
 
   // stredne riadky
-  for (int i=1; i<RIADKY-1; i++) {
+  for (int i=1; i<riadky-1; i++) {
     // prvy stlpec
     mriezka[i][0] = MRIEZKA_STENA_VERTI;
     // stredne stlpce
-    for (int j=1; j<STLPCE-1; j++) {
+    for (int j=1; j<stlpce-1; j++) {
       mriezka[i][j] = MRIEZKA_PRAZDNA;
     }
     // posledny stlpec
-    mriezka[i][STLPCE-1] = MRIEZKA_STENA_VERTI;
+    mriezka[i][stlpce-1] = MRIEZKA_STENA_VERTI;
   }
 
   // posledny riadok
-  for (int i=0; i < STLPCE; i++) {
-    mriezka[RIADKY-1][i] = MRIEZKA_STENA_HORIZ;
+  for (int i=0; i < stlpce; i++) {
+    mriezka[riadky-1][i] = MRIEZKA_STENA_HORIZ;
   }
 
   data_mriezka.mriezka = mriezka;
@@ -185,9 +186,30 @@ smer klavesa_na_smer(char klavesa) {
   }
 }
 
-int main() {
-  meta_mriezka* m = init_mriezka(RIADKY, STLPCE);
-  meta_had*     h = init_had(RIADKY*STLPCE);
+int main(int argc, char* argv[]) {
+  int riadky, stlpce;
+  if (argc == 3) {
+    riadky = std::atoi(argv[1]);
+    stlpce = std::atoi(argv[2]);
+    if (riadky < 5  || riadky > 50 ||
+        stlpce < 10 || stlpce > 200) {
+      printf("riadky musia byt medzi 5-50, stlpce 10-200\n");
+      printf("pouzijem predvolene hodnoty %d, %d\n", PREDVOLENE_RIADKY, PREDVOLENE_STLPCE);
+      riadky = PREDVOLENE_RIADKY;
+      stlpce = PREDVOLENE_STLPCE;
+      sleep(2);
+    }
+  } else {
+    printf("mozes zadat riadky a stlpce pri spusteni programu:\n");
+    printf("%s <riadky> <stlpce>\n", argv[0]);
+    printf("pouzijem predvolene hodnoty %d, %d\n", PREDVOLENE_RIADKY, PREDVOLENE_STLPCE);
+    riadky = PREDVOLENE_RIADKY;
+    stlpce = PREDVOLENE_STLPCE;
+    sleep(2);
+  }
+
+  meta_mriezka* m = init_mriezka(riadky, stlpce);
+  meta_had*     h = init_had(riadky*stlpce);
   had_do_mriezky(h, m->mriezka);
   print_mriezka(m);
 

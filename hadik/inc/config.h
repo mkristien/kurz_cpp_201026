@@ -1,7 +1,7 @@
 
 // dimenzie mriezky
-#define RIADKY  20
-#define STLPCE  80
+#define PREDVOLENE_RIADKY  20
+#define PREDVOLENE_STLPCE  80
 
 // obsah mriezky
 #define MRIEZKA_STENA_VERTI '|'
