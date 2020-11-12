@@ -1,5 +1,5 @@
 
-SRCS = pointer1.cpp pointer2.cpp pointer3.cpp
+SRCS = pointer1.cpp pointer2.cpp pointer3.cpp atoi.cpp itoa.cpp opacne.cpp
 CFLAGS = -Og
 # Premen vsetky .cpp nazvy na rovnake .exe nazvy
 EXES = $(patsubst %.cpp, %.exe, $(SRCS))
